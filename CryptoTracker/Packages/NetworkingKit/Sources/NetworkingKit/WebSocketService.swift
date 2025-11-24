@@ -14,3 +14,11 @@ public enum WebSocketConnectionState {
   case connected
   case error(Error)
 }
+
+public protocol WebSocketServiceProtocol {
+  var messagePublisher: AnyPublisher<Data, Never> { get }
+  var connectionStatePublisher: AnyPublisher<WebSocketConnectionState, Never> { get }
+  func connect()
+  func disconnect()
+  func send(_ message: String)
+}
