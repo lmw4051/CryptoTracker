@@ -30,12 +30,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		63F44EF12ED45FF200A774AE /* Exceptions for "CryptoTracker" folder in "CryptoTracker" target */ = {
+		63F44F382ED4799D00A774AE /* Exceptions for "Packages" folder in "CryptoTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Packages/LocalizationKit,
-				Packages/Models,
-				Packages/NetworkingKit,
+				LocalizationKit,
+				Models,
+				NetworkingKit,
 			);
 			target = 63F44E472ED44E4C00A774AE /* CryptoTracker */;
 		};
@@ -44,9 +44,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63F44E4A2ED44E4C00A774AE /* CryptoTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				63F44EF12ED45FF200A774AE /* Exceptions for "CryptoTracker" folder in "CryptoTracker" target */,
-			);
 			path = CryptoTracker;
 			sourceTree = "<group>";
 		};
@@ -58,6 +55,14 @@
 		63F44E622ED44E4D00A774AE /* CryptoTrackerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = CryptoTrackerUITests;
+			sourceTree = "<group>";
+		};
+		63F44F372ED4799D00A774AE /* Packages */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				63F44F382ED4799D00A774AE /* Exceptions for "Packages" folder in "CryptoTracker" target */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -90,6 +95,7 @@
 		63F44E3F2ED44E4C00A774AE = {
 			isa = PBXGroup;
 			children = (
+				63F44F372ED4799D00A774AE /* Packages */,
 				63F44E4A2ED44E4C00A774AE /* CryptoTracker */,
 				63F44E582ED44E4D00A774AE /* CryptoTrackerTests */,
 				63F44E622ED44E4D00A774AE /* CryptoTrackerUITests */,
@@ -124,6 +130,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				63F44E4A2ED44E4C00A774AE /* CryptoTracker */,
+				63F44F372ED4799D00A774AE /* Packages */,
 			);
 			name = CryptoTracker;
 			packageProductDependencies = (
