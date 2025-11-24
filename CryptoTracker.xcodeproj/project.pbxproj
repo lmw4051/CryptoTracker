@@ -29,9 +29,22 @@
 		63F44E5F2ED44E4D00A774AE /* CryptoTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		63F44EF12ED45FF200A774AE /* Exceptions for "CryptoTracker" folder in "CryptoTracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Packages/NetworkingKit,
+			);
+			target = 63F44E472ED44E4C00A774AE /* CryptoTracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63F44E4A2ED44E4C00A774AE /* CryptoTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				63F44EF12ED45FF200A774AE /* Exceptions for "CryptoTracker" folder in "CryptoTracker" target */,
+			);
 			path = CryptoTracker;
 			sourceTree = "<group>";
 		};
