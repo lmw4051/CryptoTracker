@@ -34,3 +34,13 @@ public struct Crypto: Identifiable, Codable, Equatable {
     self.image = image
   }
 }
+
+public struct WebSocketMessage: Codable {
+  public let type: String
+  public let data: Crypto
+  
+  public init(type: String, data: Crypto) {
+    self.type = type
+    self.data = data
+  }
+}
