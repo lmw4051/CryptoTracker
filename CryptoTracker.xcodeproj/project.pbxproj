@@ -33,6 +33,7 @@
 		63F44EF12ED45FF200A774AE /* Exceptions for "CryptoTracker" folder in "CryptoTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Packages/Models,
 				Packages/NetworkingKit,
 			);
 			target = 63F44E472ED44E4C00A774AE /* CryptoTracker */;
