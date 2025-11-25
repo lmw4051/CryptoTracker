@@ -62,4 +62,21 @@ final class CryptoListViewModelTests: XCTestCase {
     XCTAssertFalse(viewModel.isLoading)
     XCTAssertNil(viewModel.errorMessage)
   }
+  
+  @MainActor
+  func testFetchCryptosFailure() async {
+    // Given
+    mockNetworkService.mockResult = .failure(.invalidURL)
+    
+    // When
+    viewModel.fetchCryptos()
+    
+    // Wait for async operation
+    try? await Task.sleep(nanoseconds: 200_000_000)
+    
+    // Then
+    XCTAssertTrue(viewModel.cryptos.isEmpty)
+    XCTAssertNotNil(viewModel.errorMessage)
+    XCTAssertFalse(viewModel.isLoading)
+  }
 }
