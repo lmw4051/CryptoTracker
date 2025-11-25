@@ -79,4 +79,24 @@ final class CryptoListViewModelTests: XCTestCase {
     XCTAssertNotNil(viewModel.errorMessage)
     XCTAssertFalse(viewModel.isLoading)
   }
+  
+  @MainActor
+  func testWebSocketConnection() {
+    // Given
+    let expectation = XCTestExpectation(description: "WebSocket connects")
+    
+    // When
+    viewModel.startRealtimeUpdates()
+    
+    // Simulate connection
+    mockWebSocketService.simulateConnection()
+    
+    // Then
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+      XCTAssertEqual(self.viewModel.connectionState, .connected)
+      expectation.fulfill()
+    }
+    
+    wait(for: [expectation], timeout: 1.0)
+  }
 }
