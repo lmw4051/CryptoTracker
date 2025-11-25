@@ -35,7 +35,7 @@ struct CryptoListView: View {
           .accessibilityElement(children: .combine)
         } else {
           List(viewModel.cryptos) { crypto in
-            NavigationLink(destination: EmptyView()) {
+            NavigationLink(destination: CryptoDetailView(crypto: crypto)) {
               CryptoRowView(crypto: crypto)
             }
             .accessibilityIdentifier(AccessibilityID.CryptoList.row(crypto.id))

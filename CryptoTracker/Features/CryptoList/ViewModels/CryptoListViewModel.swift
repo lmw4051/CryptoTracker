@@ -40,6 +40,7 @@ class CryptoListViewModel: ObservableObject {
   
   private func setupWebSocketObserver() {
     webSocketService.connectionStatePublisher
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] state in
         self?.connectionState = state
       }
@@ -54,6 +55,7 @@ class CryptoListViewModel: ObservableObject {
           data: Crypto(id: "", symbol: "", name: "", currentPrice: 0, priceChangePercentage24h: 0)
         ))
       }
+      .receive(on: DispatchQueue.main)
       .sink { [weak self] message in
         self?.updateCrypto(message.data)
       }
@@ -73,6 +75,7 @@ class CryptoListViewModel: ObservableObject {
     let endpoint = Endpoint(path: "/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20")
     
     networkService.fetch(endpoint)
+      .receive(on: DispatchQueue.main)
       .sink(receiveCompletion: { [weak self] completion in
         self?.isLoading = false
         
@@ -93,3 +96,4 @@ class CryptoListViewModel: ObservableObject {
     webSocketService.disconnect()
   }
 }
+
