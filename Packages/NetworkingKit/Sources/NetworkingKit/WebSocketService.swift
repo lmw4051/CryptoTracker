@@ -8,11 +8,27 @@
 import Foundation
 import Combine
 
-public enum WebSocketConnectionState {
+public enum WebSocketConnectionState: Equatable {
   case disconnected
   case connecting
   case connected
   case error(Error)
+}
+
+extension WebSocketConnectionState {
+  public static func == (lhs: WebSocketConnectionState, rhs: WebSocketConnectionState) -> Bool {
+    switch (lhs, rhs) {
+    case (.disconnected, .disconnected),
+         (.connecting, .connecting),
+         (.connected, .connected):
+      return true
+    case (.error, .error):
+      // Treat any error as equal for comparison in UI/tests
+      return true
+    default:
+      return false
+    }
+  }
 }
 
 public protocol WebSocketServiceProtocol {
