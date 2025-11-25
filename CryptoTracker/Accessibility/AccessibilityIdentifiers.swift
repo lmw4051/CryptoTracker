@@ -20,4 +20,12 @@ public enum AccessibilityID {
       "cryptoRow_\(id)"
     }
   }
+  
+  // MARK: - Crypto Detail
+  public enum CryptoDetail {
+    public static let view = "cryptoDetailView"
+    public static let priceLabel = "priceLabel"
+    public static let changeLabel = "changeLabel"
+    public static let marketCapLabel = "marketCapLabel"
+  }
 }
