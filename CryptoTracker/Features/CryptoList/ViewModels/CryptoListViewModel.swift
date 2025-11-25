@@ -55,8 +55,14 @@ class CryptoListViewModel: ObservableObject {
         ))
       }
       .sink { [weak self] message in
-        
+        self?.updateCrypto(message.data)
       }
       .store(in: &cancellables)
+  }
+  
+  private func updateCrypto(_ crypto: Crypto) {
+    if let index = cryptos.firstIndex(where: { $0.id == crypto.id }) {
+      cryptos[index] = crypto
+    }
   }
 }
