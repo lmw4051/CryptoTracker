@@ -30,3 +30,40 @@ class MockNetworkService: NetworkServiceProtocol {
     }
   }
 }
+
+class MockWebSocketService: WebSocketServiceProtocol {
+  private let messageSubject = PassthroughSubject<Data, Never>()
+  private let connectionStateSubject = CurrentValueSubject<WebSocketConnectionState, Never>(.disconnected)
+  
+  var messagePublisher: AnyPublisher<Data, Never> {
+    messageSubject.eraseToAnyPublisher()
+  }
+  
+  var connectionStatePublisher: AnyPublisher<WebSocketConnectionState, Never> {
+    connectionStateSubject.eraseToAnyPublisher()
+  }
+  
+  func connect() {
+    connectionStateSubject.send(.connected)
+  }
+  
+  func disconnect() {
+    connectionStateSubject.send(.disconnected)
+  }
+  
+  func send(_ message: String) {
+    
+  }
+  
+  func simulateConnection() {
+    connectionStateSubject.send(.connected)
+  }
+  
+  func simulateMessage(_ data: Data) {
+    messageSubject.send(data)
+  }
+  
+  func simulateError(_ error: Error) {
+    connectionStateSubject.send(.error(error))
+  }
+}
