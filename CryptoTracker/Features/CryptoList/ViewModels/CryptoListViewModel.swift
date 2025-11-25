@@ -84,4 +84,12 @@ class CryptoListViewModel: ObservableObject {
       })
       .store(in: &cancellables)
   }
+  
+  func startRealtimeUpdates() {
+    webSocketService.connect()
+  }
+  
+  func stopRealtimeUpdates() {
+    webSocketService.disconnect()
+  }
 }
