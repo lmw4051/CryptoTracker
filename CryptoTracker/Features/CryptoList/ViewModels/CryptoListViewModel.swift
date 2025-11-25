@@ -65,4 +65,23 @@ class CryptoListViewModel: ObservableObject {
       cryptos[index] = crypto
     }
   }
+  
+  func fetchCryptos() {
+    isLoading = true
+    errorMessage = nil
+    
+    let endpoint = Endpoint(path: "/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20")
+    
+    networkService.fetch(endpoint)
+      .sink(receiveCompletion: { [weak self] completion in
+        self?.isLoading = false
+        
+        if case .failure(let error) = completion {
+          self?.errorMessage = error.localizedDescription
+        }
+      }, receiveValue: { [weak self] (cryptos: [Crypto]) in
+        self?.cryptos = cryptos
+      })
+      .store(in: &cancellables)
+  }
 }
