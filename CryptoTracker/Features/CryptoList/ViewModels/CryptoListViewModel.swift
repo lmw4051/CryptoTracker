@@ -19,7 +19,7 @@ class CryptoListViewModel: ObservableObject {
   @Published var connectionState: WebSocketConnectionState = .disconnected
   
   private let networkService: NetworkServiceProtocol
-  private let webSockegtService: WebSocketServiceProtocol
+  private let webSocketService: WebSocketServiceProtocol
   private var cancellables = Set<AnyCancellable>()
   
   init(
@@ -29,10 +29,34 @@ class CryptoListViewModel: ObservableObject {
     self.networkService = networkService
     
     if let wsService = webSockegtService {
-      self.webSockegtService = wsService
+      self.webSocketService = wsService
     } else {
       let wsURL = URL(string: "wss://ws.coincap.io/prices?assets=bitcoin,ethereum,dogecoin")!
-      self.webSockegtService = WebSocketService(url: wsURL)
+      self.webSocketService = WebSocketService(url: wsURL)
     }
+    
+    setupWebSocketObserver()
+  }
+  
+  private func setupWebSocketObserver() {
+    webSocketService.connectionStatePublisher
+      .sink { [weak self] state in
+        self?.connectionState = state
+      }
+      .store(in: &cancellables)
+    
+    webSocketService.messagePublisher
+      .decode(type: WebSocketMessage.self, decoder: JSONDecoder())
+      .catch { _ -> Just<WebSocketMessage> in
+        // Return empty message on decode error
+        Just(WebSocketMessage(
+          type: "error",
+          data: Crypto(id: "", symbol: "", name: "", currentPrice: 0, priceChangePercentage24h: 0)
+        ))
+      }
+      .sink { [weak self] message in
+        
+      }
+      .store(in: &cancellables)
   }
 }
