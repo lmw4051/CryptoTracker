@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		637627E72ED57F65001EE8E5 /* NetworkingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 637627E62ED57F65001EE8E5 /* NetworkingKit */; };
+		637627E92ED57F69001EE8E5 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 637627E82ED57F69001EE8E5 /* Models */; };
+		637627EB2ED57F6C001EE8E5 /* LocalizationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 637627EA2ED57F6C001EE8E5 /* LocalizationKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		63F44E562ED44E4D00A774AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -72,6 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637627E92ED57F69001EE8E5 /* Models in Frameworks */,
+				637627EB2ED57F6C001EE8E5 /* LocalizationKit in Frameworks */,
+				637627E72ED57F65001EE8E5 /* NetworkingKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +101,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		637627E52ED57F65001EE8E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		63F44E3F2ED44E4C00A774AE = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +115,7 @@
 				63F44E4A2ED44E4C00A774AE /* CryptoTracker */,
 				63F44E582ED44E4D00A774AE /* CryptoTrackerTests */,
 				63F44E622ED44E4D00A774AE /* CryptoTrackerUITests */,
+				637627E52ED57F65001EE8E5 /* Frameworks */,
 				63F44E492ED44E4C00A774AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,6 +151,9 @@
 			);
 			name = CryptoTracker;
 			packageProductDependencies = (
+				637627E62ED57F65001EE8E5 /* NetworkingKit */,
+				637627E82ED57F69001EE8E5 /* Models */,
+				637627EA2ED57F6C001EE8E5 /* LocalizationKit */,
 			);
 			productName = CryptoTracker;
 			productReference = 63F44E482ED44E4C00A774AE /* CryptoTracker.app */;
@@ -218,6 +238,9 @@
 			);
 			mainGroup = 63F44E3F2ED44E4C00A774AE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				637627E42ED57E0D001EE8E5 /* XCLocalSwiftPackageReference "Packages/NetworkingKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 63F44E492ED44E4C00A774AE /* Products */;
 			projectDirPath = "";
@@ -595,6 +618,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		637627E42ED57E0D001EE8E5 /* XCLocalSwiftPackageReference "Packages/NetworkingKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/NetworkingKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		637627E62ED57F65001EE8E5 /* NetworkingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkingKit;
+		};
+		637627E82ED57F69001EE8E5 /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
+		};
+		637627EA2ED57F6C001EE8E5 /* LocalizationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LocalizationKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63F44E402ED44E4C00A774AE /* Project object */;
 }
