@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import CryptoTracker
 
 final class CryptoListUITests: XCTestCase {
   var app: XCUIApplication!
@@ -20,5 +21,20 @@ final class CryptoListUITests: XCTestCase {
   override func tearDown() {
     app = nil
     super.tearDown()
+  }
+  
+  // MARK: - Helper Methods
+  private func waitForLoadingToComplete(timeout: TimeInterval = 10) {
+    let loadingIndicator = app.activityIndicators[AccessibilityID.CryptoList.loadingIndicator]
+    
+    if loadingIndicator.exists {
+      let disappeared = NSPredicate(format: "exists == false")
+      let expectation = XCTNSPredicateExpectation(predicate: disappeared, object: loadingIndicator)
+      let result = XCTWaiter.wait(for: [expectation], timeout: timeout)
+      
+      if result != .completed {
+        print("⚠️ Loading did not complete within \(timeout) seconds")
+      }
+    }
   }
 }
