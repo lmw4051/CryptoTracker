@@ -116,4 +116,16 @@ final class CryptoListUITests: XCTestCase {
       XCTAssertNotNil(firstRow, "❌ Rows disappeared after refresh")
     }
   }
+  
+  func testNavigationTitle() {
+    // Given
+    waitForLoadingToComplete()
+    
+    // When/Then - Verify navigation title
+    let navBar = app.navigationBars["Cryptocurrencies"]
+    XCTAssertTrue(
+      navBar.waitForExistence(timeout: 5),
+      "❌ Navigation title 'Cryptocurrencies' not found"
+    )
+  }
 }
