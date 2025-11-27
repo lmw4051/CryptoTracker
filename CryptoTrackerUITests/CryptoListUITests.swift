@@ -128,4 +128,28 @@ final class CryptoListUITests: XCTestCase {
       "❌ Navigation title 'Cryptocurrencies' not found"
     )
   }
+  
+  func testCryptoRowHasContent() {
+    // Given
+    waitForLoadingToComplete()
+    
+    // When
+    guard let firstRow = findFirstCryptoRow() else {
+      XCTFail("❌ No crypto row found")
+      return
+    }
+    
+    // Then - Verify row has accessibility label
+    let label = firstRow.label
+    XCTAssertFalse(
+      label.isEmpty,
+      "❌ Crypto row has no accessibility label"
+    )
+    
+    // Verify label contains expected text
+    XCTAssertTrue(
+      label.contains("cryptocurrency row") ||
+      label.contains("加密貨幣列表項")
+    )
+  }
 }
