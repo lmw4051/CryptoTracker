@@ -37,4 +37,25 @@ final class CryptoListUITests: XCTestCase {
       }
     }
   }
+  
+  private func findFirstCryptoRow() -> XCUIElement? {
+    // Search using identifier prefix
+    let rowsWithPrefix = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'cryptoRow_'"))
+    
+    if rowsWithPrefix.firstMatch.waitForExistence(timeout: 5) {
+      return rowsWithPrefix.firstMatch
+    }
+    
+    // Fetch all buttons and filter for a crypto row
+    let allButtons = app.buttons.allElementsBoundByIndex
+    
+    for button in allButtons {
+      if button.identifier.starts(with: "cryptoRow_") {
+        return button
+      }
+    }
+    
+    // Return nil if still not found
+    return nil
+  }
 }

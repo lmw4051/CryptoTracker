@@ -36,6 +36,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		63159B332ED821EC00420546 /* Exceptions for "CryptoTracker" folder in "CryptoTrackerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Accessibility/AccessibilityIdentifiers.swift,
+			);
+			target = 63F44E5E2ED44E4D00A774AE /* CryptoTrackerUITests */;
+		};
 		63F44F382ED4799D00A774AE /* Exceptions for "Packages" folder in "CryptoTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -50,6 +57,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63F44E4A2ED44E4C00A774AE /* CryptoTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				63159B332ED821EC00420546 /* Exceptions for "CryptoTracker" folder in "CryptoTrackerUITests" target */,
+			);
 			path = CryptoTracker;
 			sourceTree = "<group>";
 		};
