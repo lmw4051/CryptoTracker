@@ -87,4 +87,33 @@ final class CryptoListUITests: XCTestCase {
       "❌ First crypto row is not hittable"
     )
   }
+  
+  func testRefreshButton() {
+    // Given
+    waitForLoadingToComplete()
+    
+    // When
+    let refreshButton = app.buttons[AccessibilityID.CryptoList.refreshButton]
+    XCTAssertTrue(
+      refreshButton.waitForExistence(timeout: 5),
+      "❌ Refresh button not found"
+    )
+    
+    // Record that we have rows before refresh
+    let hadRowsBefore = findFirstCryptoRow() != nil
+    refreshButton.tap()
+    
+    // Then
+    let loadingIndicator = app.activityIndicators[AccessibilityID.CryptoList.loadingIndicator]
+    _ = loadingIndicator.waitForExistence(timeout: 1)
+    
+    // Wait for refresh to complete
+    waitForLoadingToComplete()
+    
+    // Verify rows still exist after refresh
+    if hadRowsBefore {
+      let firstRow = findFirstCryptoRow()
+      XCTAssertNotNil(firstRow, "❌ Rows disappeared after refresh")
+    }
+  }
 }
