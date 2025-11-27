@@ -179,4 +179,45 @@ final class CryptoListUITests: XCTestCase {
       "❌ List did not scroll: Top row is still the same"
     )
   }
+  
+  func testDetailViewContent() {
+    // Given
+    waitForLoadingToComplete()
+    
+    guard let firstRow = findFirstCryptoRow() else {
+      XCTFail("No crypto row found")
+      return
+    }
+    
+    firstRow.tap()
+    sleep(1)
+    
+    // Then
+    let priceLabel = app.staticTexts.matching(
+      identifier: AccessibilityID.CryptoDetail.priceLabel
+    ).firstMatch
+    
+    XCTAssertTrue(
+      priceLabel.waitForExistence(timeout: 5),
+      "Price label not found"
+    )
+    
+    let changeLabel = app.staticTexts.matching(
+      identifier: AccessibilityID.CryptoDetail.changeLabel
+    ).firstMatch
+    
+    XCTAssertTrue(
+      changeLabel.waitForExistence(timeout: 2),
+      "Change label not found"
+    )
+    
+    XCTAssertGreaterThan(
+      app.scrollViews.count,
+      0,
+      "No scroll views found"
+    )
+    
+    let backButton = app.navigationBars.buttons.element(boundBy: 0)
+    XCTAssertTrue(backButton.exists, "Back button not found")
+  }
 }
