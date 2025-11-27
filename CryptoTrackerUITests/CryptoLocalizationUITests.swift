@@ -20,4 +20,23 @@ final class CryptoLocalizationUITests: CryptoTrackerUITestBase {
       "English navigation title not found"
     )
   }
+  
+  func testTraditionalChineseLocalization() {
+    // Given
+    app.launchArguments = [
+      "-AppleLanguages",
+      "(zh-Hant)",
+      "-AppleLocale",
+      "zh_TW"
+    ]
+    
+    app.launch()
+    
+    // When/Then
+    let navBar = app.navigationBars["加密貨幣"]
+    XCTAssertTrue(
+      navBar.waitForExistence(timeout: 10),
+      "Chinese navigation title not found"
+    )
+  }
 }
