@@ -152,4 +152,31 @@ final class CryptoListUITests: XCTestCase {
       label.contains("加密貨幣列表項")
     )
   }
+  
+  func testScrollingInList() {
+    // Given
+    waitForLoadingToComplete()
+    
+    guard let firstRow = findFirstCryptoRow() else {
+      XCTFail("❌ No crypto row found")
+      return
+    }
+    
+    let firstRowIDBeforeScroll = firstRow.identifier
+    
+    // When
+    app.swipeUp()
+    
+    // Then
+    guard let firstRowAfterScroll = findFirstCryptoRow() else {
+      XCTFail("❌ No rows found after scroll")
+      return
+    }
+    
+    XCTAssertNotEqual(
+      firstRowAfterScroll.identifier,
+      firstRowIDBeforeScroll,
+      "❌ List did not scroll: Top row is still the same"
+    )
+  }
 }
