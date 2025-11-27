@@ -58,4 +58,33 @@ final class CryptoListUITests: XCTestCase {
     // Return nil if still not found
     return nil
   }
+  
+  // MARK: - Tests
+  func testCryptoListDisplayed() {
+    // Given - App is launched
+    
+    // When
+    let navBar = app.navigationBars.firstMatch
+    XCTAssertTrue(navBar.waitForExistence(timeout: 10),
+                  "❌ Navigation bar did not appear")
+    
+    waitForLoadingToComplete()
+    
+    // Then
+    let firstRow = findFirstCryptoRow()
+    XCTAssertNotNil(
+      firstRow,
+      "❌ No crypto rows found. Check if API is working and data is loaded."
+    )
+    
+    XCTAssertTrue(
+      firstRow?.exists ?? false,
+      "❌ First crypto row does not exist"
+    )
+    
+    XCTAssertTrue(
+      firstRow?.isHittable ?? false,
+      "❌ First crypto row is not hittable"
+    )
+  }
 }
