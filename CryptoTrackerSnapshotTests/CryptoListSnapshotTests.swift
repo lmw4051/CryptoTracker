@@ -31,4 +31,21 @@ final class CryptoTrackerSnapshotTests: XCTestCase {
     
     assertSnapshot(of: view, as: .image(precision: 0.99))
   }
+  
+  func testCryptoRowViewDark() {
+      let crypto = Crypto(
+        id: "ethereum",
+        symbol: "eth",
+        name: "Ethereum",
+        currentPrice: 3000.00,
+        priceChangePercentage24h: -2.15
+      )
+      
+      let view = CryptoRowView(crypto: crypto)
+        .frame(width: 375, height: 80)
+        .background(Color.black)
+        .preferredColorScheme(.dark)
+      
+      assertSnapshot(of: view, as: .image(precision: 0.99))
+    }
 }
