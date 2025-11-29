@@ -1,11 +1,11 @@
-# [Project Name] 📱
+# CryptoTracker 📱
 
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-iOS%2016-blue.svg)
 ![Architecture](https://img.shields.io/badge/Architecture-MVVM%20%2B%20Modular-green.svg)
 ![Testing](https://img.shields.io/badge/Testing-Unit%20%26%20UI-purple.svg)
 
-**[Project Name]** is a modern iOS application designed to demonstrate advanced software engineering practices. The primary goal of this project is to practice **Modular Architecture** using Swift Package Manager (SPM) and to implement a robust **Testing Strategy** (Unit & UI Tests).
+**CryptoTracker** is a modern iOS application designed to demonstrate advanced software engineering practices. The primary goal of this project is to practice **Modular Architecture** using Swift Package Manager (SPM) and to implement a robust **Testing Strategy** (Unit & UI Tests).
 
 The app is built using **SwiftUI** and follows the **MVVM** design pattern, ensuring a clean separation of concerns and testability.
 
@@ -57,8 +57,8 @@ Focused on verifying critical user journeys and UI stability.
 ## 📂 Project Structure
 
 ```text
-[Project Name]/
-├── [App Name]/              # Main App Target (Views, ViewModels)
+CryptoTracker/
+├── CryptoTracker/           # Main App Target (Views, ViewModels)
 │   ├── App/                 # App Entry Point & Configuration
 │   ├── Features/            # Feature-based folders (List, Detail)
 │   └── Resources/           # Assets
@@ -66,5 +66,6 @@ Focused on verifying critical user journeys and UI stability.
 │   ├── NetworkingKit/       # Network Layer
 │   ├── Models/              # Data Models
 │   ├── LocalizationKit/     # Strings & Translations
-├── [App Name]Tests/         # Unit Tests for the App Target
-└── [App Name]UITests/       # UI Tests
+├── CryptoTrackerTests/         # Unit Tests for the App Target
+├── CryptoTrackerUITests/       # UI Tests
+└── CryptoTrackerSnapshotTests/ # Snapshot Tests
